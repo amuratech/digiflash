@@ -8,7 +8,7 @@ class UserInfo extends React.Component {
       const data = this.props.userData;
 
       return (
-        <div className="ui card pull-left ">
+        <div className="ui card">
           <img src={data.avatar_url} alt={data.login} />
           <p> {data.login} </p>
         </div>
