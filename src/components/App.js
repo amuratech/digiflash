@@ -18,7 +18,30 @@ class App extends React.Component {
   onSearchSubmit = async (term) => {
     const response = await git.get(`/repos/amuratech/crm/pulls`,{
     });
-    this.state.setState({ pulls: response.data });
+    const userData = {};
+    response.data.forEach(function(pull){
+      if(userData[pull.user.login] === undefined){
+        userData[pull.user.login] = {}
+      }
+      if(userData[pull.user.login][pull.base.ref] === undefined){
+        userData[pull.user.login][pull.base.ref] = {}
+      }
+      if(userData[pull.user.login][pull.base.ref][pull.number] === undefined){
+        userData[pull.user.login][pull.base.ref][pull.number] = {}
+      }
+
+      userData[pull.user.login][pull.base.ref][pull.number]['title'] = pull.title
+      userData[pull.user.login][pull.base.ref][pull.number]['pull_url'] = pull.url
+      userData[pull.user.login][pull.base.ref][pull.number]['pull_updated_at'] = pull.updated_at
+
+      if(pull.labels.length > 0){
+        userData[pull.user.login][pull.base.ref][pull.number]['label'] = pull.labels[0].name
+      }
+      if(pull.requested_reviewers.length > 0){
+        userData[pull.user.login][pull.base.ref][pull.number]['reviewers'] = pull.requested_reviewers[0].login
+      }
+    })
+    this.state.setState({ pulls: userData });
   }
 
   render(){
