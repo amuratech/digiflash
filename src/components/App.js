@@ -1,11 +1,11 @@
 import React from 'react';
 import git from '../api/git';
 import SearchBar from './SearchBar';
-import UserInfo from './UserInfo';
+import Dashboard from './Dashboard';
 
 class App extends React.Component {
 
-  state = { pulls: {}, reviews: {} };
+  state = { pulls: null, searchTerm: '' };
 
   // git urls
   // to fetch repos = `/users/${term}/repos`
@@ -33,6 +33,7 @@ class App extends React.Component {
       userData[pull.user.login][pull.base.ref][pull.number]['title'] = pull.title
       userData[pull.user.login][pull.base.ref][pull.number]['pull_url'] = pull.url
       userData[pull.user.login][pull.base.ref][pull.number]['pull_updated_at'] = pull.updated_at
+      userData[pull.user.login]['avatar_url'] = pull.user.avatar_url;
 
       if(pull.labels.length > 0){
         userData[pull.user.login][pull.base.ref][pull.number]['label'] = pull.labels[0].name
@@ -41,14 +42,14 @@ class App extends React.Component {
         userData[pull.user.login][pull.base.ref][pull.number]['reviewers'] = pull.requested_reviewers[0].login
       }
     })
-    this.state.setState({ pulls: userData });
+    this.setState({ pulls: userData, searchTerm: term });
   }
 
   render(){
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
-        <SearchBar searchText={this.onSearchSubmit}/>
-        <UserInfo userData={this.state.data} />
+        <SearchBar searchText={this.onSearchSubmit} />
+        <Dashboard userData={this.state.pulls} term={this.state.searchTerm} />
       </div>
     )
   }
