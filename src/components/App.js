@@ -3,6 +3,7 @@ import git from '../api/git';
 import SearchBar from './SearchBar';
 import Dashboard from './Dashboard';
 import PrList from './PrList';
+import UserInfo from './UserInfo';
 
 class App extends React.Component {
 
