@@ -2,6 +2,7 @@ import React from 'react';
 import git from '../api/git';
 import SearchBar from './SearchBar';
 import Dashboard from './Dashboard';
+import PrList from './PrList';
 
 class App extends React.Component {
 
