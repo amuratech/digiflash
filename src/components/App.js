@@ -2,6 +2,7 @@ import React from 'react';
 import git from '../api/git';
 import SearchBar from './SearchBar';
 import UserInfo from './UserInfo';
+import PrList from'./PrList';
 
 class App extends React.Component {
 
@@ -17,6 +18,7 @@ class App extends React.Component {
       <div className="ui container" style={{ marginTop: '10px' }}>
         <SearchBar searchText={this.onSearchSubmit}/>
         <UserInfo userData={this.state.data} />
+        <PrList PrData={this.state.pr_data} />
       </div>
     )
   }
