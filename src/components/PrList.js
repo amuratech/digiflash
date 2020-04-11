@@ -44,7 +44,7 @@ class PrList extends React.Component {
                   )                
                 })
                 )       
-              : <tr> No data to display </tr>          
+              : <tr><td>No data to display</td></tr>          
             }
           </tbody>
         </table>
