@@ -7,13 +7,7 @@ class UserData extends React.Component {
     var data = this.props.userData;
     const items = [];
     data = Object.entries(data)[0];
-    Object.entries(data).forEach(([key, value]) => {
-      items.push(
-        <tr>
-          <td dataLabel="Pull">{value}</td>
-        </tr>
-      )
-    })
+
     return (
       <div className="ui pull-left">
         <table className="ui celled table pull-left">
@@ -22,7 +16,6 @@ class UserData extends React.Component {
             <th>Url</th>
           </tr></thead>
           <tbody>
-            {items}
           </tbody>
         </table>
       </div>

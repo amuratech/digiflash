@@ -9,8 +9,7 @@ class Dashboard extends React.Component {
     var term = this.props.term.split(':')[0];
     var release = this.props.term.split(':')[1];
     if(data !== undefined && data !== null ){
-      debugger
-      data = Object.entries(data).find( function(obj) { return obj[0] === term } )[1]
+      data = Object.entries(data).find( function(obj) { return obj[0] == term } )[1]
       return (
         <React.Fragment>
         <UserInfo userUrl={data.avatar_url} searchTerm={term}/>
