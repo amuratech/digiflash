@@ -16,11 +16,11 @@ class SearchBar extends React.Component {
   }
 
   render(){
-    // we are not going to add () to this.onInputChange as if we did this that will call on render but we dont want on render, we want it on change of input
+    // we are not going to add () to this.onInputChange as if we did this that will call on render but we dontonFormSubmit want on render, we want it on change of input
     // we can write onChange event like onChange={(event) => console.log('foo')}
     return(
       <div className="ui segment">
-        <form onSubmit={this.onFormSubmit}className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label className="">Search Git User</label>
               <input

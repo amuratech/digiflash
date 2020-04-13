@@ -18,9 +18,8 @@ class App extends React.Component {
   // to check how many pulls are there = /repos/amuratech/crm/pulls
 
   onSearchSubmit = async (term) => {
-    const response = await git.get(`/repos/amuratech/crm/commits`,{
+    const response = await git.get(`/repos/amuratech/crm/pulls`,{
     });
-    debugger
     const userData = {};
     response.data.forEach(function(pull){
       if(userData[pull.user.login] === undefined){
@@ -45,7 +44,6 @@ class App extends React.Component {
         userData[pull.user.login][pull.base.ref][pull.number]['reviewers'] = pull.requested_reviewers[0].login
       }
     })
-    debugger
     this.setState({ pulls: userData, searchTerm: term });
   }
 
