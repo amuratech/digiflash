@@ -7,7 +7,7 @@ import PrList from './PrList';
 
 class App extends React.Component {
 
-  state = { pulls: null, searchTerm: '' };
+  state = { pulls: null, searchTerm: '', project: '' };
 
   // git urls
   // to fetch repos = `/users/${term}/repos`
@@ -50,7 +50,6 @@ class App extends React.Component {
   render(){
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
-        <SearchBar searchText={this.onSearchSubmit} />
         <Dashboard userData={this.state.pulls} term={this.state.searchTerm} />
         <PrList PrData={this.state.pr_data} />
       </div>

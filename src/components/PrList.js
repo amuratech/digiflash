@@ -3,13 +3,13 @@ import git from '../api/git';
 import './Style.css';
 
 class PrList extends React.Component {
-  state = {pr_data: null, term: '', state: 'all' }
+  state = {pr_data: null, term: '', state: 'all', sort: 'asc' }
 
   onButtonClicked = async (term) => {
     // we can pass other states too such as open, closed, merged etc
     // var base = $('.base').val()
     const response = await git.get(`repos/amuratech/crm/pulls`, {
-      params: { state: this.state.state, base: this.state.base }
+      params: { state: this.state.state, base: this.state.base, sort: this.state.sort }
     });
     this.setState({ pr_data: response.data });
   }
@@ -32,6 +32,10 @@ class PrList extends React.Component {
               <option value="open">Open</option>
               <option value="closed">Closed</option>
             </select>
+            <select onChange={(event) => this.setState({ sort: event.target.value })}>
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
             <button className="ui primary button" onClick={this.onButtonClicked}>
               Fetch PRs
             </button>
@@ -50,7 +54,7 @@ class PrList extends React.Component {
               ? (this.state.pr_data.map(function(object, i){
                   return(
                     <tr key={object.id}>
-                      <td data-label="prLink">{object.url}</td>
+                      <td data-label="prLink"><a href={object.url}>{object.url}</a></td>
                       <td data-label="author">{object.user.login}</td>
                       <td data-label="status">{object.state}</td>
                     </tr>
