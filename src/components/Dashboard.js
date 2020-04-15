@@ -13,8 +13,8 @@ class Dashboard extends React.Component {
       data = Object.entries(data).find( function(obj) { return obj[0] === term } )[1]
       return (
         <React.Fragment>
-        <UserInfo userUrl={data.avatar_url} searchTerm={term}/>
-        <UserData userData={data[release]} />
+          <UserInfo userUrl={data.avatar_url} searchTerm={term}/>
+          <UserData userData={data[release]} />
         </React.Fragment>
       )
     } else {
