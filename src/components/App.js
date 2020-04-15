@@ -1,7 +1,7 @@
 import React from 'react';
 import git from '../api/git';
 import SearchBar from './SearchBar';
-import Dashboard from './Dashboard';
+// import Dashboard from './Dashboard';
 import PrList from './PrList';
 // import UserInfo from './UserInfo';
 
@@ -50,7 +50,6 @@ class App extends React.Component {
   render(){
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
-        <Dashboard userData={this.state.pulls} term={this.state.searchTerm} />
         <PrList PrData={this.state.pr_data} />
       </div>
     )
