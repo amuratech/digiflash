@@ -54,7 +54,6 @@ class App extends React.Component {
         <Header />
         <Banner />
         <div className="container marketing">
-          <Dashboard userData={this.state.pulls} term={this.state.searchTerm} />
           <PrList PrData={this.state.pr_data} />
         </div>
       </React.Fragment>
