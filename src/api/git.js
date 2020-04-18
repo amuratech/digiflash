@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://api.github.com',
+  baseURL: 'https://api.github.com/',
   headers: {
     Authorization: 'token your token'
   }
