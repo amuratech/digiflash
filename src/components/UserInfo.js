@@ -12,7 +12,7 @@ class UserInfo extends React.Component {
       // )
     // })
     return (
-      <div className="ui card pull-right">
+      <div className="card">
         <img src={url} alt={term} />
         <p> {term} </p>
       </div>
