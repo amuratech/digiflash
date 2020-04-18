@@ -3,7 +3,8 @@ import git from '../api/git';
 import SearchBar from './SearchBar';
 // import Dashboard from './Dashboard';
 import PrList from './PrList';
-// import UserInfo from './UserInfo';
+import Banner from './Banner';
+import Header from './Header';
 
 class App extends React.Component {
 
@@ -49,9 +50,14 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="ui container" style={{ marginTop: '10px' }}>
-        <PrList PrData={this.state.pr_data} />
-      </div>
+      <React.Fragment>
+        <Header />
+        <Banner />
+        <div className="container marketing">
+          <Dashboard userData={this.state.pulls} term={this.state.searchTerm} />
+          <PrList PrData={this.state.pr_data} />
+        </div>
+      </React.Fragment>
     )
   }
 }
