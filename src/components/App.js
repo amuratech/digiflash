@@ -4,6 +4,7 @@ import PrList from './PrList';
 import Banner from './Banner';
 import Header from './Header';
 import Footer from './Footer';
+import PrTabs from './PrTabs';
 
 
 class App extends React.Component {
@@ -54,6 +55,7 @@ class App extends React.Component {
         <Header />
         <Banner />
         <div className="container marketing">
+          <PrTabs />
           <PrList PrData={this.state.pr_data} />
         </div>
         <Footer />
