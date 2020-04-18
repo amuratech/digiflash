@@ -27,11 +27,11 @@ class PrList extends React.Component {
       <React.Fragment>
         <div className="row">
           <div className="col">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Base Branch</label>
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <label className="input-group-text" htmlFor="inputGroupSelect01">Base Branch</label>
               </div>
-              <select class="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ state: event.target.value })}>
+              <select className="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ state: event.target.value })}>
                 <option value="r1.45.0">r1.45.0</option>
                 <option value="r1.46.0">r1.46.0</option>
                 <option value="r1.47.0">r1.47.0</option>
@@ -42,7 +42,7 @@ class PrList extends React.Component {
           <div className="col">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
-                <label className="input-group-text" for="inputGroupSelect01">Pr Status</label>
+                <label className="input-group-text" htmlFor="inputGroupSelect01">Pr Status</label>
               </div>
               <select className="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ state: event.target.value })}>
                 <option value="all">All</option>
@@ -54,7 +54,7 @@ class PrList extends React.Component {
           <div className="col">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
-                <label className="input-group-text" for="inputGroupSelect01">Sort</label>
+                <label className="input-group-text" htmlFor="inputGroupSelect01">Sort</label>
               </div>
               <select className="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ sort: event.target.value })}>
                 <option value="asc">Ascending</option>
@@ -77,6 +77,7 @@ class PrList extends React.Component {
                   <th>PR Link</th>
                   <th>Author</th>
                   <th>Status</th>
+                  <th>Label</th>
                 </tr>
               </thead>
               <tbody>
@@ -84,9 +85,10 @@ class PrList extends React.Component {
                   ? (this.state.pr_data.map(function(object, i){
                       return(
                         <tr key={object.id}>
-                          <td data-label="prLink">{object.url}</td>
+                          <td data-label="prLink">{object.html_url}</td>
                           <td data-label="author">{object.user.login}</td>
-                          <td data-label="status">{object.state}</td>
+                          <td data-label="status">{object.state}</td>                          
+                          <td data-label="status" className="badge badge-pill badge-success" >{ object.labels.length !== 0 ? object.labels[object.labels.length - 1].name : 'NA'}</td>
                         </tr>
                       )
                     })
