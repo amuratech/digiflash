@@ -1,10 +1,10 @@
 import React from 'react';
 import git from '../api/git';
-import SearchBar from './SearchBar';
-// import Dashboard from './Dashboard';
 import PrList from './PrList';
 import Banner from './Banner';
 import Header from './Header';
+import Footer from './Footer';
+
 
 class App extends React.Component {
 
@@ -56,6 +56,7 @@ class App extends React.Component {
         <div className="container marketing">
           <PrList PrData={this.state.pr_data} />
         </div>
+        <Footer />
       </React.Fragment>
     )
   }
