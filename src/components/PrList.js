@@ -1,10 +1,17 @@
 import React from 'react';
 import git from '../api/git';
+import Pagination from './Pagination';
 import './Style.css';
 
 class PrList extends React.Component {
-  state = {pr_data: null, term: '', state: 'all', sort: 'asc', base: null }
+  constructor() {
+    super();
+    this.state = { pr_data: null, term: '', state: 'all', sort: 'asc', base: null, pageOfItems: [] }
+  }
 
+  onChangePage = (pageOfItems) => {
+    this.setState({ pageOfItems: pageOfItems });
+  }
     // we can pass other states too such as open, closed, merged etc
   onButtonClicked = async () => {
     var params = { state: this.state.state, sort: this.state.sort };
@@ -17,7 +24,7 @@ class PrList extends React.Component {
     this.setState({ pr_data: response.data });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.onButtonClicked();
   }
 
@@ -82,12 +89,12 @@ class PrList extends React.Component {
               </thead>
               <tbody>
                 {pr_data_present
-                  ? (this.state.pr_data.map(function(object, i){
+                  ? (this.state.pageOfItems.map(function(object, i){
                       return(
                         <tr key={object.id}>
                           <td data-label="prLink">{object.html_url}</td>
                           <td data-label="author">{object.user.login}</td>
-                          <td data-label="status">{object.state}</td>                          
+                          <td data-label="status">{object.state}</td>
                           <td data-label="status" className="badge badge-pill badge-success" >{ object.labels.length !== 0 ? object.labels[object.labels.length - 1].name : 'NA'}</td>
                         </tr>
                       )
@@ -98,6 +105,9 @@ class PrList extends React.Component {
               </tbody>
             </table>
           </div>
+        </div>
+        <div>
+          <Pagination items={ this.state.pr_data } onChangePage={ this.onChangePage } />
         </div>
       </React.Fragment>
     );
