@@ -106,9 +106,12 @@ class PrList extends React.Component {
             </table>
           </div>
         </div>
-        <div>
-          <Pagination items={ this.state.pr_data } onChangePage={ this.onChangePage } />
-        </div>
+          {pr_data_present ? (
+            <div>
+              <Pagination items={ this.state.pr_data } onChangePage={ this.onChangePage } />
+            </div>
+          ) : ''
+          }
       </React.Fragment>
     );
   }

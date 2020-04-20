@@ -1,59 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 
-const propTypes = {
-  onChangePage: PropTypes.func.isRequired,
-  initialPage: PropTypes.number,
-  pageSize: PropTypes.number
-}
+function Pagination(props) {
+  const [pageData, setPager] = useState({});
+  const [data] = useState(props.items);
+  const [initialPage] = useState(1);
+  const [perPageSize] = useState(10);
 
-const defaultProps = {
-  initialPage: 1,
-  pageSize: 10
-}
+  useEffect(() => {
+    setPage(initialPage)
+  }, []);
 
-class Pagination extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { pager: {} };
-  }
-
-  componentWillMount() {
-    // set page if items array isn't empty
-    if (this.props.items && this.props.items.length) {
-        this.setPage(this.props.initialPage);
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // reset page if items array has changed
-    if (this.props.items !== prevProps.items) {
-        this.setPage(this.props.initialPage);
-    }
-  }
-
-  setPage = (page) => {
-    var { items, pageSize } = this.props;
-    var pager = this.state.pager;
+  const setPage = (page) => {
+    let items = data;
+    let pageSize = perPageSize;
+    let pager = pageData;
 
     if (page < 1 || page > pager.totalPages) {
-        return;
+      return;
     }
-
     // get new pager object for specified page
-    pager = this.getPager(items.length, page, pageSize);
+    pager = getPager(items.length, page, pageSize);
 
     // get new page of items from items array
     var pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
 
     // update state
-    this.setState({ pager: pager });
-
+    setPager(pager);
     // call change page function in parent component
-    this.props.onChangePage(pageOfItems);
+    props.onChangePage(pageOfItems);
   }
 
-  getPager = (totalItems, currentPage, pageSize) => {
+  const getPager = (totalItems, currentPage, pageSize) => {
     // default to first page
     currentPage = currentPage || 1;
 
@@ -103,40 +80,36 @@ class Pagination extends React.Component {
     };
   }
 
-  render() {
-    var pager = this.state.pager;
-
-    if (!pager.pages || pager.pages.length <= 1) {
-      // don't display pager if there is only 1 page
-      return null;
-    }
-
-    return (
-      <nav aria-label="Page navigation example">
+  return (
+    <nav aria-label="Page navigation example">
+      {pageData.pages === undefined ? (
+        ''
+      ) : (
         <ul className="pagination">
-          <li className={ pager.currentPage === 1 ? 'disabled page-item' : 'page-item' }>
-            <a href="#!" className="page-link" onClick={ () => this.setPage(1) }>First</a>
+        <li className={ pageData.currentPage === 1 ? 'disabled page-item' : 'page-item' }>
+          <a href="#!" className="page-link" onClick={ () => setPage(1) }>First</a>
+        </li>
+        <li className={pageData.currentPage === 1 ? 'disabled page-item' : 'page-item'}>
+          <a href="#!" className="page-link" onClick={ () => setPage(pageData.currentPage - 1) }>Previous</a>
+        </li>
+
+        { pageData.pages.map((page, index) =>
+          <li key={index} className={pageData.currentPage === page ? 'active page-item' : 'page-item'}>
+            <a href="#!" className="page-link" onClick={() => setPage(page)}>{page}</a>
           </li>
-          <li className={pager.currentPage === 1 ? 'disabled page-item' : 'page-item'}>
-            <a href="#!" className="page-link" onClick={ () => this.setPage(pager.currentPage - 1) }>Previous</a>
-          </li>
-          { pager.pages.map((page, index) =>
-            <li key={index} className={pager.currentPage === page ? 'active page-item' : 'page-item'}>
-              <a href="#!" className="page-link" onClick={() => this.setPage(page)}>{page}</a>
-            </li>
-          ) }
-          <li className={ pager.currentPage === pager.totalPages ? 'disabled page-item' : 'page-item' }>
-            <a href="#!" className="page-link" onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-          </li>
-          <li className="page-link" className={ pager.currentPage === pager.totalPages ? 'disabled page-item' : 'page-item' }>
-            <a href="#!" className="page-link" onClick={() => this.setPage(pager.totalPages)}>Last</a>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
+        ) }
+        <li className={ pageData.currentPage === pageData.totalPages ? 'disabled page-item' : 'page-item' }>
+          <a href="#!" className="page-link" onClick={() => setPage(pageData.currentPage + 1)}>Next</a>
+        </li>
+        <li className="page-link" className={ pageData.currentPage === pageData.totalPages ? 'disabled page-item' : 'page-item' }>
+          <a href="#!" className="page-link" onClick={() => setPage(pageData.totalPages)}>Last</a>
+        </li>
+      </ul>
+      )
+      }
+
+    </nav>
+  );
 }
 
-Pagination.propTypes = propTypes;
-Pagination.defaultProps = defaultProps;
 export default Pagination;
