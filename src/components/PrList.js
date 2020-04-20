@@ -25,7 +25,7 @@ class PrList extends React.Component {
     const pr_data_present = (this.state.pr_data !== null && this.state.pr_data !== undefined);
     return (
       <React.Fragment>
-        <div className="row">
+        <div className="row mt-3">
           <div className="col">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
@@ -87,7 +87,7 @@ class PrList extends React.Component {
                         <tr key={object.id}>
                           <td data-label="prLink">{object.html_url}</td>
                           <td data-label="author">{object.user.login}</td>
-                          <td data-label="status">{object.state}</td>                          
+                          <td data-label="status">{object.state}</td>
                           <td data-label="status" className="badge badge-pill badge-success" >{ object.labels.length !== 0 ? object.labels[object.labels.length - 1].name : 'NA'}</td>
                         </tr>
                       )

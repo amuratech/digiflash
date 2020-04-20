@@ -1,22 +1,20 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 
 class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a className="navbar-brand" href="#">DigiFlash</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                {/* <a className="nav-link disabled" href="#">Logout</a> */}
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <Navbar navbar="dark" bg="dark" expand="md" fixed="top">
+          <Navbar.Brand href="#">DigiFlash</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              {/* <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link> */}
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </React.Fragment>
     );
   }
