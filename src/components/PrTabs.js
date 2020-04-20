@@ -1,4 +1,5 @@
 import React from 'react';
+import PrList from './PrList';
 import { Tabs, Tab } from 'react-bootstrap';
 
 class PrTabs extends React.Component {
@@ -7,11 +8,9 @@ class PrTabs extends React.Component {
       <React.Fragment>
         <div className="row">
           <div className="col-lg-12">
-            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey="peer_review" id="uncontrolled-tab-example">
               <Tab eventKey="peer_review" title="Peer Review">
-                <div>
-                  Make a Component of Peer Review and use here
-                </div>
+                <PrList PrData={this.props.pr_data} />
               </Tab>
               <Tab eventKey="merge_review" title="Merge Review">
                 <div>
