@@ -8,18 +8,23 @@ class PrTabs extends React.Component {
       <React.Fragment>
         <div className="row">
           <div className="col-lg-12">
-            <Tabs defaultActiveKey="peer_review" id="uncontrolled-tab-example">
-              <Tab eventKey="peer_review" title="Peer Review">
+            <Tabs defaultActiveKey="all_prs" id="uncontrolled-tab-example">
+              <Tab eventKey="all_prs" title="All PR">
                 <PrList PrData={this.props.pr_data} />
+              </Tab>
+              <Tab eventKey="peer_review" title="Peer Review">
+                <div>
+                  Make a Component of Peer Review and use here
+                </div>
               </Tab>
               <Tab eventKey="merge_review" title="Merge Review">
                 <div>
-                Make a Component of Merge Review and use here
+                  Make a Component of Merge Review and use here
                 </div>
               </Tab>
               <Tab eventKey="final_review" title="Final Review">
                 <div>
-                Make a Component of Final Review and use here
+                  Make a Component of Final Review and use here
                 </div>
               </Tab>
             </Tabs>
