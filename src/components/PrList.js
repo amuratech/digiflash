@@ -1,10 +1,14 @@
 import React from 'react';
 import git from '../api/git';
+import Pagination from './Pagination';
 import './Style.css';
 
 class PrList extends React.Component {
-  state = {pr_data: null, term: '', state: 'all', sort: 'asc', base: null }
+  state = { pr_data: null, term: '', state: 'all', sort: 'asc', base: null, pageOfItems: [] }
 
+  onChangePage = (pageOfItems) => {
+    this.setState({ pageOfItems });
+  }
     // we can pass other states too such as open, closed, merged etc
   onButtonClicked = async () => {
     var params = { state: this.state.state, sort: this.state.sort };
@@ -17,7 +21,7 @@ class PrList extends React.Component {
     this.setState({ pr_data: response.data });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.onButtonClicked();
   }
 
@@ -82,7 +86,7 @@ class PrList extends React.Component {
               </thead>
               <tbody>
                 {pr_data_present
-                  ? (this.state.pr_data.map(function(object, i){
+                  ? (this.state.pageOfItems.map(function(object, i){
                       return(
                         <tr key={object.id}>
                           <td data-label="prLink">{object.html_url}</td>
@@ -99,6 +103,12 @@ class PrList extends React.Component {
             </table>
           </div>
         </div>
+          {pr_data_present ? (
+            <div>
+              <Pagination items={ this.state.pr_data } onChangePage={ this.onChangePage } />
+            </div>
+          ) : ''
+          }
       </React.Fragment>
     );
   }
