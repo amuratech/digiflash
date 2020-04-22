@@ -4,13 +4,10 @@ import Pagination from './Pagination';
 import './Style.css';
 
 class PrList extends React.Component {
-  constructor() {
-    super();
-    this.state = { pr_data: null, term: '', state: 'all', sort: 'asc', base: null, pageOfItems: [] }
-  }
+  state = { pr_data: null, term: '', state: 'all', sort: 'asc', base: null, pageOfItems: [] }
 
   onChangePage = (pageOfItems) => {
-    this.setState({ pageOfItems: pageOfItems });
+    this.setState({ pageOfItems });
   }
     // we can pass other states too such as open, closed, merged etc
   onButtonClicked = async () => {
