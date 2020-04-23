@@ -12,19 +12,14 @@ class PrTabs extends React.Component {
               <Tab eventKey="all_prs" title="All PR">
                 <PrList PrData={this.props.pr_data} />
               </Tab>
-              <Tab eventKey="peer_review" title="Peer Review">
+              <Tab eventKey="prs_to_be_reviewed" title="Pending PRs To Be Reviewed By Me">
                 <div>
-                  Make a Component of Peer Review and use here
+                  Make a Component of Pending PRs To Be Reviewed By Me
                 </div>
               </Tab>
-              <Tab eventKey="merge_review" title="Merge Review">
+              <Tab eventKey="prs_pending_for_review" title="My PRs Pending For Review With Others">
                 <div>
-                  Make a Component of Merge Review and use here
-                </div>
-              </Tab>
-              <Tab eventKey="final_review" title="Final Review">
-                <div>
-                  Make a Component of Final Review and use here
+                  Make a Component of My PRs Pending For Review With Others
                 </div>
               </Tab>
             </Tabs>
