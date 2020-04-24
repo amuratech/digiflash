@@ -1,13 +1,14 @@
 import React from 'react';
 import PrList from './PrList';
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab, Row, Col } from 'react-bootstrap';
+import './PrTabs.css';
 
 class PrTabs extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-lg-12">
+        <Row>
+          <Col>
             <Tabs defaultActiveKey="all_prs" id="uncontrolled-tab-example">
               <Tab eventKey="all_prs" title="All PR">
                 <PrList PrData={this.props.pr_data} />
@@ -23,8 +24,8 @@ class PrTabs extends React.Component {
                 </div>
               </Tab>
             </Tabs>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </React.Fragment>
     );
   }

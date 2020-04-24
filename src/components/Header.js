@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <Navbar navbar="dark" bg="dark" expand="md" fixed="top">
-          <Navbar.Brand href="#">DigiFlash</Navbar.Brand>
+          <Navbar.Brand href="#" className="text-white">DigiFlash</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
