@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react';
 
 function Pagination(props) {
   const [pager, setPager] = useState({});
-  const [items] = useState(props.items);
+  const [items, setItems] = useState([]);
   const [initialPage] = useState(1);
   const [pageSize] = useState(10);
 
   useEffect(() => {
+    setItems(props.items)
     setPage(initialPage)
-  }, []);
+  }, [props.items]);
+
+  useEffect(() => {
+    setPage(initialPage)
+  }, [items]);
 
   const setPage = (page) => {
     let newPager = getPager(items.length, page);

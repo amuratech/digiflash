@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import './Style.css';
 
 class PrList extends React.Component {
-  state = { pr_data: null, term: '', state: 'all', sort: 'asc', base: null, pageOfItems: [] }
+  state = { pr_data: null, term: '', state: 'all', sort: 'created', base: null, pageOfItems: [] }
 
   onChangePage = (pageOfItems) => {
     this.setState({ pageOfItems });
@@ -61,8 +61,10 @@ class PrList extends React.Component {
                 <label className="input-group-text" htmlFor="inputGroupSelect01">Sort</label>
               </div>
               <select className="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ sort: event.target.value })}>
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
+                <option value="created">Created</option>
+                <option value="updated">Updated</option>
+                <option value="popularity">Popularity</option>
+                <option value="long-running">Long Running</option>
               </select>
             </div>
           </div>
