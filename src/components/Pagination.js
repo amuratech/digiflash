@@ -9,11 +9,7 @@ function Pagination(props) {
   useEffect(() => {
     setItems(props.items)
     setPage(initialPage)
-  }, [props.items]);
-
-  useEffect(() => {
-    setPage(initialPage)
-  }, [items]);
+  }, [props.items, items]);
 
   const setPage = (page) => {
     let newPager = getPager(items.length, page);

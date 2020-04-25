@@ -35,7 +35,7 @@ class PrList extends React.Component {
               <div className="input-group-prepend">
                 <label className="input-group-text" htmlFor="inputGroupSelect01">Base Branch</label>
               </div>
-              <select className="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ state: event.target.value })}>
+              <select className="custom-select" id="inputGroupSelect01" onChange={(event) => this.setState({ base: event.target.value })}>
                 <option value="r1.45.0">r1.45.0</option>
                 <option value="r1.46.0">r1.46.0</option>
                 <option value="r1.47.0">r1.47.0</option>
