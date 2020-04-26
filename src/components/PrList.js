@@ -99,7 +99,7 @@ class PrList extends React.Component {
                       )
                     })
                     )
-                  : <tr><td> No data to display </td></tr>
+                  : <tr><td colSpan="4" className="text-center"> No data to display </td></tr>
                 }
               </tbody>
             </table>
