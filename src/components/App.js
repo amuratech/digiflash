@@ -4,7 +4,7 @@ import Banner from './Banner';
 import Header from './Header';
 import Footer from './Footer';
 import PrTabs from './PrTabs';
-import github from '../api/github';
+import './App.css';
 import { Container } from 'react-bootstrap';
 
 class App extends React.Component {
