@@ -4,11 +4,29 @@ import Banner from './Banner';
 import Header from './Header';
 import Footer from './Footer';
 import PrTabs from './PrTabs';
-
+import github from '../api/github';
 
 class App extends React.Component {
 
   state = { pulls: null, searchTerm: '', project: '' };
+
+  componentDidMount() {
+    const url = window.location.href;
+    const hasCode = url.includes("?code=");
+
+    if (hasCode) {
+      const newUrl = url.split("?code=");
+      let code = newUrl[1];
+      let body = { client_id: 'f62e1f4242f2975a640f', client_secret: '850ed15dc6d0630ac1c9906c9e07a3f48afde0c6', code: { code } }
+
+      github.post('login/oauth/access_token', {
+        body: body 
+      }).then(response => response.json())
+      .then(({ token }) => {
+        console.log("access token is ..............." + token);
+      });
+    }
+  }
 
   // git urls
   // to fetch repos = `/users/${term}/repos`
