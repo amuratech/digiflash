@@ -4,6 +4,7 @@ import Banner from './Banner';
 import Header from './Header';
 import Footer from './Footer';
 import PrTabs from './PrTabs';
+import { Container } from 'react-bootstrap';
 
 
 class App extends React.Component {
@@ -52,10 +53,10 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <Banner />
-        <div className="container marketing">
+        <Container>
+          <Banner />
           <PrTabs pr_data={this.state.pr_data} />
-        </div>
+        </Container>
         <Footer />
       </React.Fragment>
     )
