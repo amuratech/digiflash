@@ -1,0 +1,18 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 100px;
+  padding: 25px;
+}
+
+footer {
+  background-color: #343a40;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
