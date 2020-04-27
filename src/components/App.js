@@ -18,11 +18,10 @@ class App extends React.Component {
     if (hasCode) {
       const newUrl = url.split("?code=");
       let code = newUrl[1];
-      let body = { client_id: 'f62e1f4242f2975a640f', client_secret: '850ed15dc6d0630ac1c9906c9e07a3f48afde0c6', code: { code } }
+      // let body = { client_id: 'f62e1f4242f2975a640f', client_secret: '850ed15dc6d0630ac1c9906c9e07a3f48afde0c6', code: { code } }
 
-      github.post('login/oauth/access_token', {
-        body: body 
-      }).then(response => response.json())
+      fetch(`https://2e23177d.ngrok.io/authenticate/${code}`)
+      .then(response => response.json())
       .then(({ token }) => {
         console.log("access token is ..............." + token);
       });

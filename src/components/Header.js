@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 
 const CLIENT_ID = "f62e1f4242f2975a640f";
-const REDIRECT_URI = "http://localhost:3000/";
+const REDIRECT_URI = "https://8b8bfaf6.ngrok.io/";
 
 class Header extends React.Component {
   render() {
