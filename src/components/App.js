@@ -1,13 +1,16 @@
 import React from 'react';
 import git from '../api/git';
-import SearchBar from './SearchBar';
-import Dashboard from './Dashboard';
-import PrList from './PrList';
-import UserInfo from './UserInfo';
+import Banner from './Banner';
+import Header from './Header';
+import Footer from './Footer';
+import PrTabs from './PrTabs';
+import './App.css';
+import { Container } from 'react-bootstrap';
+
 
 class App extends React.Component {
 
-  state = { pulls: null, searchTerm: '' };
+  state = { pulls: null, searchTerm: '', project: '' };
 
   // git urls
   // to fetch repos = `/users/${term}/repos`
@@ -49,11 +52,14 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="ui container" style={{ marginTop: '10px' }}>
-        <SearchBar searchText={this.onSearchSubmit} />
-        <Dashboard userData={this.state.pulls} term={this.state.searchTerm} />
-        <PrList PrData={this.state.pr_data} />
-      </div>
+      <React.Fragment>
+        <Header />
+        <Container>
+          <Banner />
+          <PrTabs pr_data={this.state.pr_data} />
+        </Container>
+        <Footer />
+      </React.Fragment>
     )
   }
 }
