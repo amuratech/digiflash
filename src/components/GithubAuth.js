@@ -7,8 +7,7 @@ import { signIn, signOut } from '../actions';
 const CLIENT_ID = "f62e1f4242f2975a640f";
 const REDIRECT_URI = "http://localhost:3000/";
 
-class GithubAuth extends React.Component {  
-
+class GithubAuth extends React.Component {
   componentDidMount() {
     const url = window.location.href;
     const hasCode = url.includes("?code=");
@@ -30,7 +29,6 @@ class GithubAuth extends React.Component {
     // this is written because when page reloads the redux object losses its values hence we 
     // need re-initialize the token from the localstorage.    
     var authCreds = JSON.parse(localStorage.getItem("authDetails"))['accessToken']
-
     if (!_.isEmpty(authCreds)) {
       this.props.signIn(authCreds);
     }    
