@@ -21,9 +21,9 @@ class PrList extends React.Component {
     this.setState({ pr_data: response.data });
   }
 
-  componentDidMount() {
-    this.onButtonClicked();
-  }
+  // componentDidMount() {
+  //   this.onButtonClicked();
+  // }
 
   render() {
     const pr_data_present = (this.state.pr_data !== null && this.state.pr_data !== undefined);
