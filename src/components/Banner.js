@@ -6,12 +6,10 @@ class Banner extends React.Component {
   constructor(props) {
     super(props);
     this.state = { bannerList: [
-        "Awaiting PR review from you is 2",
-        "Reviewed by you PR as 3",
-        "Changes requested by you on 1",
-        "Your 2 PR in cooking status",
-        "Your 1 PR waiting for merge review",
-        "Your 3 PR waiting for final review"
+        "Always add security label for security tickets",
+        "Get clarity on the ticket before moving the ticket to ready to start",
+        "Check all the checklists before passing to peer/merge reviews",
+        "Get your pr reviews done within 2 days if possible"
       ],
       banner: ""
     };
@@ -21,7 +19,7 @@ class Banner extends React.Component {
     this.setState({ banner: this.bannerChooser() });
     setInterval(() => {
       this.setState({ banner: this.bannerChooser() });
-    }, 10000);
+    }, 5000);
   }
 
   bannerChooser = () => {
@@ -30,14 +28,14 @@ class Banner extends React.Component {
 
   render() {
     return (
-      <Row className="mt-5 mb-5">
+      <Row className="mt-5 mb-5 fadeInUp">
         <Col>
           <Alert
             onClick={() => this.bannerChooser()}
             variant="info"
-            className="text-center"
+            className="text-center" 
             >
-            <span className="fadeInUp">{this.state.banner}</span>
+            <span>{this.state.banner}</span>
           </Alert>
         </Col>
       </Row>

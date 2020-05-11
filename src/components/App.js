@@ -7,11 +7,9 @@ import PrTabs from './PrTabs';
 import './App.css';
 import { Container } from 'react-bootstrap';
 
-
 class App extends React.Component {
 
   state = { pulls: null, searchTerm: '', project: '' };
-
   // git urls
   // to fetch repos = `/users/${term}/repos`
   // to fetch user info = `/users/${term}`
